@@ -11,10 +11,12 @@ Tweeter is a simple, single-page Twitter clone built using Express and vanilla J
 
 ## Features
 
-- Navigation bar with responsive design.
+- Fixed navigation bar that stays at the top while scrolling.
+- Header with a hardcoded avatar and user name.
 - Custom fonts and icons using Google Fonts and Font Awesome.
+- Styled layout using CSS, with a textured header background.
 
 ## Future Enhancements
 
-- Add tweet posting functionality.
-- Implement dynamic tweet loading.
+- Add dynamic tweets.
+- Implement user interactions for posting tweets.

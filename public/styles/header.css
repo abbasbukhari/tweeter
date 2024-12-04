@@ -1,0 +1,24 @@
+header {
+    width: 100%;
+    background-color: #F4F4F9; /* Subtle background color */
+    background-image: url('/images/your-background-texture.png'); /* Replace with your texture file */
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  header img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+  
+  header h2 {
+    margin-top: 10px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
