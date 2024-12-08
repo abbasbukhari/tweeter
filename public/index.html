@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Tweeter</title>
   <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/nav.css">
@@ -33,6 +33,8 @@
   <main>
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
+      <!-- Error message container -->
+      <div id="error-message" class="hidden"></div>
       <form action="/tweets/" method="POST">
         <label for="tweet-text">What are you humming about?</label>
         <textarea name="text" id="tweet-text" maxlength="140"></textarea>

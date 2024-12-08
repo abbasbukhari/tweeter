@@ -75,11 +75,15 @@ const createTweetElement = function(tweet) {
     $("form").on("submit", function(event) {
       event.preventDefault(); // Prevent default form submission behavior
   
+      // Hide any existing error messages
+      $("#error-message").slideUp();
+  
       const tweetText = $("#tweet-text").val(); // Get the value of the tweet input
       const errorMessage = validateTweet(tweetText);
   
       if (errorMessage) {
-        alert(errorMessage); // Show alert for error
+        // Display error message
+        $("#error-message").text(errorMessage).slideDown();
         return; // Stop form submission
       }
   
@@ -91,6 +95,7 @@ const createTweetElement = function(tweet) {
         success: (newTweet) => {
           $("#tweet-text").val(""); // Clear the form after successful submission
           $(".counter").text(140); // Reset the character counter
+          $("#error-message").slideUp(); // Hide error message if visible
   
           // Dynamically render the new tweet at the top of the container
           const $newTweet = createTweetElement(newTweet);

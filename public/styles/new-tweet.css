@@ -1,3 +1,4 @@
+/* Styling for the new-tweet section */
 .new-tweet {
     width: 90%;
     margin: 20px auto;
@@ -5,6 +6,24 @@
     background-color: #e9ecef; /* Light gray background */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Error message container styling */
+  #error-message {
+    display: none;
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    border: 1px solid #f5c6cb; /* Red border */
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  #error-message.hidden {
+    display: none; /* Hide the element */
   }
   
   .new-tweet h2 {

@@ -1,16 +1,72 @@
+/* Mobile-first styles (default layout) */
 body {
-  font-family: 'Source Sans 3', sans-serif;
   margin: 0;
-  padding: 0;
-  padding-top: 120px; /* Moves content below the fixed nav */
-  background-color: #F4F4F9; /* Background color for the page */
+  font-family: 'Source Sans 3', sans-serif;
 }
 
-main {
-  width: 90%; /* 90% of the parent element */
-  margin: 0 auto; /* Center aligns horizontally */
-  background-color: #F4F4F9; /* Matches the body background color */
-  padding: 20px; /* Adds padding inside the main container */
-  border-radius: 10px; /* Optional: Adds rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow for depth */
+nav, header, main {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+#tweets-container {
+  margin: 20px auto;
+}
+
+/* Tablet styles */
+@media only screen and (min-width: 768px) {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  #tweets-container {
+    flex: 0 0 65%;
+  }
+
+  .new-tweet {
+    flex: 0 0 30%;
+    margin-right: 20px;
+  }
+}
+
+/* Desktop styles */
+@media only screen and (min-width: 1024px) {
+  body {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  nav {
+    background-color: #111111;
+    color: #f0f0f0;
+    padding: 15px;
+  }
+
+  nav span {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  #tweets-container {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .new-tweet {
+    width: 25%;
+    float: right;
+  }
+
+  .counter {
+    text-align: right;
+  }
 }
