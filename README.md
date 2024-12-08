@@ -1,22 +1,14 @@
-# Tweeter
+# Tweeter Project
 
-Tweeter is a simple, single-page Twitter clone built using Express and vanilla JavaScript.
-
-## Setup
-
-1. Clone this repository.
-2. Install dependencies using `npm install`.
-3. Start the server with `npm run local`.
-4. Open your browser and navigate to `http://localhost:8080`.
+Tweeter is a simple, single-page Twitter clone.
 
 ## Features
+- Responsive design for mobile, tablet, and desktop screens.
+- AJAX for posting and retrieving tweets without page refresh.
+- Dynamic character counter with validation.
 
-- Fixed navigation bar that stays at the top while scrolling.
-- Header with a hardcoded avatar and user name.
-- Custom fonts and icons using Google Fonts and Font Awesome.
-- Styled layout using CSS, with a textured header background.
+## Installation
+1. Clone the repo: `git clone https://github.com/abbasbukhari/tweeter.git`
+2. Install dependencies: `npm install`
+3. Start the server: `npx nodemon server/index.js`
 
-## Future Enhancements
-
-- Add dynamic tweets.
-- Implement user interactions for posting tweets.
