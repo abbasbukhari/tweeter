@@ -1,23 +1,27 @@
-header {
-  width: 100%;
-  background-color: #F4F4F9; /* Subtle background color */
-  background-image: url('/images/your-background-texture.png'); /* Replace with your texture file */
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.profile-header {
+  background-color: #f9f9f9;
   padding: 20px 0;
+  text-align: center;
 }
 
-header img {
-  width: 120px;
-  height: 120px;
+.profile-card {
+  display: inline-block;
+  background: white;
+  padding: 15px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
+  margin-bottom: 10px;
 }
 
-header h2 {
-  margin-top: 10px;
-  font-family: 'Source Sans 3', sans-serif;
+.profile-card h2 {
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
   font-size: 1.5rem;
-  color: #333;
 }

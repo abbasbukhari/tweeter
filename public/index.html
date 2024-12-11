@@ -10,45 +10,50 @@
   <link rel="stylesheet" href="styles/new-tweet.css">
   <link rel="stylesheet" href="styles/tweet.css">
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 </head>
 <body>
+  <!-- Navigation Bar -->
   <nav>
-    <span>Tweeter</span>
-    <div class="new-tweet">
-      <p>Write a new tweet</p>
-      <i class="fas fa-angle-double-down"></i>
+    <div class="nav-content">
+      <span class="logo">Tweeter</span>
+      <div class="new-tweet-toggle">
+        <p>Write a new tweet</p>
+        <i class="fas fa-angle-double-down"></i>
+      </div>
     </div>
   </nav>
-  <header>
-    <div>
-      <img src="/images/profile-hex.png" alt="Profile Avatar">
-    </div>
-    <br>
-    <div>
+
+  <!-- Header Section -->
+  <header class="profile-header">
+    <div class="profile-card">
+      <img src="/images/profile-hex.png" alt="Profile Avatar" class="profile-avatar">
       <h2>Alex Smith</h2>
     </div>
   </header>
+
+  <!-- Main Content -->
   <main>
+    <!-- New Tweet Form -->
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
-      <!-- Error message container -->
       <div id="error-message" class="hidden"></div>
       <form action="/tweets/" method="POST">
         <label for="tweet-text">What are you humming about?</label>
         <textarea name="text" id="tweet-text" maxlength="140"></textarea>
-        <div>
+        <div class="form-footer">
           <button type="submit">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
         </div>
       </form>
     </section>
 
+    <!-- Tweets Container -->
     <section id="tweets-container">
       <!-- Dynamically generated tweets will appear here -->
     </section>
   </main>
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="scripts/composer-char-counter.js"></script>
   <script src="scripts/client.js"></script>

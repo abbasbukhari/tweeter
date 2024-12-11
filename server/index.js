@@ -1,27 +1,45 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 const PORT = 8080;
 
 // Middleware
-app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
-// Placeholder tweets
-let tweets = [];
+// Dummy data
+const tweets = require("../data-files/initial-tweets.json");
+
+// Define Alex Smith's profile
+const alexSmithProfile = {
+  name: "Alex Smith",
+  avatars: "/images/profile-hex.png", // Updated to use local file
+  handle: "@alex"
+};
 
 // Routes
-app.post('/tweets', (req, res) => {
-  const tweet = req.body.text;
-  if (!tweet) {
-    return res.status(400).send('Tweet content cannot be empty.');
-  }
-  tweets.push({ text: tweet, created_at: new Date() });
-  res.status(201).send('Tweet created!');
+app.get("/tweets", (req, res) => {
+  res.json(tweets);
 });
 
-app.get('/tweets', (req, res) => {
-  res.status(200).json(tweets);
+app.post("/tweets", (req, res) => {
+  if (!req.body.text || req.body.text.trim() === "") {
+    return res.status(400).send("Tweet cannot be empty");
+  }
+  if (req.body.text.length > 140) {
+    return res.status(400).send("Tweet exceeds 140 characters");
+  }
+
+  const newTweet = {
+    user: alexSmithProfile, // Always use Alex Smith's profile
+    content: {
+      text: req.body.text
+    },
+    created_at: Date.now()
+  };
+
+  tweets.unshift(newTweet);
+  res.status(201).send("Tweet created");
 });
 
 // Start server

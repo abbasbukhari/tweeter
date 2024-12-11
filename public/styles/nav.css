@@ -1,27 +1,37 @@
 nav {
-  height: 120px;
-  width: 100%;
   background-color: #4056A1;
-  color: #FFFFFF;
+  color: white;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-content {
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1.5em;
-  position: fixed; /* Keeps nav-bar at the top */
-  top: 0;
-  z-index: 10; /* Ensures nav stays on top */
 }
 
-nav span {
-  font-family: 'Bungee', sans-serif;
-  font-size: 1.5em;
+.logo {
+  font-family: "Bungee", sans-serif;
+  font-size: 1.8rem;
 }
 
-.new-tweet {
-  text-align: right;
+.new-tweet-toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
-.new-tweet i {
-  font-size: 1.2em;
-  margin-top: 0.5em;
+.new-tweet-toggle p {
+  margin: 0 10px 0 0;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
+}
+
+.new-tweet-toggle i {
+  font-size: 1.5rem;
 }

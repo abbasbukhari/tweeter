@@ -1,26 +1,83 @@
-/* Base tweet styles */
+/* Tweet container styles */
+#tweets-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Individual tweet card */
 .tweet {
-  width: 100%;
-  margin: 10px auto;
+  background-color: white;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
-.tweet img {
-  max-width: 50px;
-  height: auto;
+/* Header styling for tweet */
+.tweet header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
-/* Tablet and desktop adjustments */
-@media only screen and (min-width: 768px) {
-  .tweet {
-    max-width: 80%;
-  }
+/* User information */
+.tweet .user-info {
+  display: flex;
+  align-items: center;
 }
 
-@media only screen and (min-width: 1024px) {
-  .tweet {
-    max-width: 60%;
-    margin: 20px auto;
-  }
+.tweet .user-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Makes the image circular */
+  margin-right: 10px;
+}
+
+.tweet .user-info .user-name {
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.tweet .user-info .user-handle {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* Tweet content */
+.tweet .tweet-content {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 10px 0;
+}
+
+/* Footer styling */
+.tweet footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555;
+  border-top: 1px solid #f1f1f1;
+  padding-top: 10px;
+}
+
+.tweet footer .icons {
+  display: flex;
+  gap: 10px;
+}
+
+.tweet footer .icons i {
+  cursor: pointer;
+  color: #4056A1;
+  transition: color 0.3s ease;
+}
+
+.tweet footer .icons i:hover {
+  color: #1b3b78;
 }

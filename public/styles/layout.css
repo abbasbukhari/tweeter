@@ -1,72 +1,58 @@
-/* Mobile-first styles (default layout) */
-body {
-  margin: 0;
-  font-family: 'Source Sans 3', sans-serif;
-}
-
-nav, header, main {
-  width: 100%;
-  margin: 0 auto;
-  padding: 10px;
-}
-
-#tweets-container {
+/* Base styles for mobile-first design */
+main {
+  width: 90%;
+  max-width: 800px;
   margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-/* Tablet styles */
-@media only screen and (min-width: 768px) {
-  nav {
+/* Responsive design for tablets */
+@media (min-width: 768px) {
+  .profile-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px;
   }
 
-  main {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-
-  #tweets-container {
-    flex: 0 0 65%;
+  .profile-card {
+    text-align: left;
   }
 
   .new-tweet {
-    flex: 0 0 30%;
-    margin-right: 20px;
-  }
-}
-
-/* Desktop styles */
-@media only screen and (min-width: 1024px) {
-  body {
-    max-width: 1024px;
+    width: 70%;
     margin: 0 auto;
-  }
-
-  nav {
-    background-color: #111111;
-    color: #f0f0f0;
-    padding: 15px;
-  }
-
-  nav span {
-    font-size: 1.5rem;
-    font-weight: bold;
   }
 
   #tweets-container {
     width: 70%;
     margin: 0 auto;
   }
+}
 
-  .new-tweet {
-    width: 25%;
-    float: right;
+/* Responsive design for desktops */
+@media (min-width: 1024px) {
+  .profile-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* Ensures the profile card stays centered */
   }
 
-  .counter {
-    text-align: right;
+  .profile-card {
+    text-align: center; /* Ensures text within the card is centered */
+    margin: 0 auto; /* Centers the card horizontally */
+  }
+
+  .new-tweet {
+    max-width: 800px;
+    margin: 20px auto;
+  }
+
+  #tweets-container {
+    max-width: 800px;
+    margin: 20px auto;
   }
 }
