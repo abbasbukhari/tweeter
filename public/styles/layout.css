@@ -38,21 +38,22 @@ main {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: center; /* Ensures the profile card stays centered */
+    justify-content: flex-start; /* Align header to the left */
+    width: 30%;
   }
 
   .profile-card {
-    text-align: center; /* Ensures text within the card is centered */
-    margin: 0 auto; /* Centers the card horizontally */
+    text-align: left;
   }
 
   .new-tweet {
-    max-width: 800px;
-    margin: 20px auto;
+    flex: 1;
+    margin-left: auto; /* Align tweet form to the right */
+    width: 60%;
   }
 
   #tweets-container {
-    max-width: 800px;
-    margin: 20px auto;
+    flex: 2;
+    margin-left: 20px;
   }
 }

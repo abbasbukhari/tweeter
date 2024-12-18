@@ -1,6 +1,94 @@
 $(document).ready(function () {
+  // Function to show error messages
+  const showError = (message) => {
+    const $error = $("#error-message");
+    $error.text(message).slideDown();
+  };
+
+  // Function to hide error messages
+  const hideError = () => {
+    const $error = $("#error-message");
+    $error.slideUp();
+  };
+
+  // Update the counter and show error dynamically
+  $("#tweet-text").on("input", function () {
+    const charCount = 140 - $(this).val().length;
+    $(".counter").text(charCount);
+
+    if (charCount < 0) {
+      $(".counter").addClass("counter-error");
+      showError("Your tweet exceeds the character limit!");
+    } else {
+      $(".counter").removeClass("counter-error");
+      hideError(); // Remove error message if character count is valid
+    }
+  });
+
+  // Form submission logic
+  $("form").on("submit", function (event) {
+    event.preventDefault();
+    const tweetText = $("#tweet-text").val();
+
+    // Hide any previous errors
+    hideError();
+
+    // Validate input
+    if (!tweetText) {
+      showError("Tweet cannot be empty!");
+      return;
+    }
+
+    if (tweetText.length > 140) {
+      showError("Tweet exceeds maximum character limit!");
+      return;
+    }
+
+    // Send the tweet via AJAX
+    const serializedData = $(this).serialize();
+    $.ajax({
+      url: "/tweets",
+      method: "POST",
+      data: serializedData,
+      success: () => {
+        $("#tweet-text").val(""); // Clear the input
+        $(".counter").text(140).removeClass("counter-error"); // Reset the counter
+        hideError(); // Ensure no error messages are displayed
+        loadTweets(); // Reload tweets dynamically
+      },
+      error: (err) => {
+        console.error("Error posting tweet:", err);
+      },
+    });
+  });
+
+  // Load tweets dynamically
+  const loadTweets = () => {
+    $.ajax({
+      url: "/tweets",
+      method: "GET",
+      dataType: "json",
+      success: (tweets) => {
+        renderTweets(tweets);
+      },
+      error: (err) => {
+        console.error("Error loading tweets:", err);
+      },
+    });
+  };
+
+  // Render tweets
+  const renderTweets = (tweets) => {
+    $("#tweets-container").empty();
+    tweets.reverse().forEach((tweet) => {
+      const $tweet = createTweetElement(tweet);
+      $("#tweets-container").prepend($tweet);
+    });
+  };
+
+  // Create a single tweet element
   const createTweetElement = (tweet) => {
-    const $tweet = $(`
+    return $(`
       <article class="tweet">
         <header>
           <div class="user-info">
@@ -24,65 +112,8 @@ $(document).ready(function () {
         </footer>
       </article>
     `);
-    return $tweet;
   };
 
-  const renderTweets = (tweets) => {
-    $("#tweets-container").empty(); // Clear existing tweets
-    tweets.forEach((tweet) => {
-      const $tweet = createTweetElement(tweet);
-      $("#tweets-container").prepend($tweet);
-    });
-  };
-
-  const loadTweets = () => {
-    $.ajax({
-      url: "/tweets",
-      method: "GET",
-      dataType: "json",
-      success: (tweets) => {
-        renderTweets(tweets);
-      },
-      error: (err) => {
-        console.error("Error loading tweets:", err);
-      },
-    });
-  };
-
-  $("form").on("submit", function (event) {
-    event.preventDefault();
-    const tweetText = $("#tweet-text").val();
-
-    if (!tweetText) {
-      showError("Tweet cannot be empty!");
-      return;
-    }
-
-    if (tweetText.length > 140) {
-      showError("Tweet exceeds maximum character limit!");
-      return;
-    }
-
-    const serializedData = $(this).serialize();
-    $.ajax({
-      url: "/tweets",
-      method: "POST",
-      data: serializedData,
-      success: (newTweet) => {
-        $("#tweet-text").val("");
-        $(".counter").text(140);
-        loadTweets(); // Dynamically reload tweets after successful submission
-      },
-      error: (err) => {
-        console.error("Error posting tweet:", err);
-      },
-    });
-  });
-
-  const showError = (message) => {
-    const $error = $("#error-message");
-    $error.text(message).slideDown();
-  };
-
-  loadTweets(); // Load tweets on page load
+  // Initial load
+  loadTweets();
 });

@@ -40,7 +40,7 @@
       <div id="error-message" class="hidden"></div>
       <form action="/tweets/" method="POST">
         <label for="tweet-text">What are you humming about?</label>
-        <textarea name="text" id="tweet-text" maxlength="140"></textarea>
+        <textarea id="tweet-text" name="text" placeholder="What are you humming about?"></textarea>
         <div class="form-footer">
           <button type="submit">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
@@ -50,7 +50,24 @@
 
     <!-- Tweets Container -->
     <section id="tweets-container">
-      <!-- Dynamically generated tweets will appear here -->
+      <!-- Example tweet structure -->
+      <article class="tweet">
+        <header>
+          <div class="user-info">
+            <img src="/images/user-avatar.png" alt="User Avatar">
+            <div>
+              <h3 class="user-name">@username</h3>
+              <p class="user-handle">@handle · <time datetime="2024-12-17T10:00:00Z">2 hours ago</time></p>
+            </div>
+          </div>
+        </header>
+        <p class="tweet-content">This is a sample tweet to demonstrate the layout and styles.</p>
+        <footer class="icons">
+          <i class="icon-like">👍</i>
+          <i class="icon-retweet">🔄</i>
+          <i class="icon-flag">🚩</i>
+        </footer>
+      </article>
     </section>
   </main>
 
