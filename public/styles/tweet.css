@@ -1,0 +1,78 @@
+.tweet {
+  border: 3px solid #5E6572;
+  width: 100%;
+  margin-bottom: 30px;
+  transition: box-shadow 0.3s;
+}
+.tweet .hide {
+  visibility: hidden;
+}
+.tweet:hover .hide {
+  visibility: visible;
+}
+.tweet .light {
+  opacity: 0.6;
+}
+.tweet:hover .light {
+  opacity: 1;
+}
+.tweet footer {
+  width: 100%;
+  padding: 30px;
+}
+.tweet footer .reaction {
+  float: right;
+}
+.tweet header {
+  width: 100%;
+}
+.tweet header img {
+  float: left;
+  margin: 15px 20px 0px 25px;
+}
+.tweet header small {
+  font-size: 25px;
+  float: right;
+  padding-right: 30px;
+  color: #b8b8b8;
+}
+.tweet .tweet-text {
+  margin-top: 30px;
+  width: 98%;
+  border-bottom: 3px solid #5E6572;
+  transform: translateX(1%);
+  padding: 10px;
+  word-wrap: break-word;
+}
+
+.userInfo {
+  padding-top: 30px;
+}
+
+/* Added styles for tweet action buttons */
+.like-btn {
+  color: grey;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.like-btn.liked {
+  color: red;
+}
+
+.retweet-btn {
+  color: grey;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.retweet-btn:hover {
+  color: green;
+}
+
+.flag-btn {
+  color: grey;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.flag-btn:hover {
+  color: orange;
+}

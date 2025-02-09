@@ -1,0 +1,36 @@
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 120px;
+  width: 100vw;
+  z-index: 3;
+  background-color: #D6DAFF;
+  padding: 1.5em;
+}
+
+nav span {
+  font-family: 'Bungee', sans-serif;
+  color: #ffffff;
+}
+
+#make-tweet, .fa-angle-double-down{
+  float: right;
+  margin-right: 50px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+.fa-angle-double-down {
+  margin-right: 150px;
+  animation: upDown 1.5s infinite;
+  cursor: pointer;
+}
+
+@keyframes upDown {
+  0% {margin-top: 0px; color: rgba(255, 166, 0, 0.829);}
+  50% {margin-top: 18px; color: rgba(255, 60, 0, 0.829);}
+  100% {margin-top: 0px; color: rgba(255, 166, 0, 0.829);}
+}
+

@@ -1,0 +1,23 @@
+@mixin center($half) {
+  transform: translate(-$half, -$half);
+  left: $half;
+  top: $half;
+}
+
+#profile {
+  margin-top: 120px;
+  height: 400px;
+  width: 100%;
+  background-color: #D6DAFF;
+  position: relative;
+
+  div {
+    position: absolute;
+    text-align: center;
+    @include center(50%);
+  }
+}
+
+h2 {
+  font-family: 'Bungee', sans-serif;
+}

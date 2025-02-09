@@ -1,0 +1,20 @@
+#profile {
+  margin-top: 120px;
+  height: 400px;
+  width: 100%;
+  background-color: #D6DAFF;
+  position: relative;
+}
+#profile div {
+  position: absolute;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+h2 {
+  font-family: "Bungee", sans-serif;
+}
+
+/*# sourceMappingURL=header.css.map */
