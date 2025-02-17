@@ -25,63 +25,48 @@ $(() => {
   };
 
   const renderTweets = (tweets) => {
-    const tweetArr = [];
-    for (let tweet of tweets) {
-      const $tweet = createTweetElement(tweet);
-      tweetArr.push($tweet);
-    }
-    $('#tweet-container').empty().append(tweetArr);
+    console.log("Rendering tweets:", tweets);
+    // Sort tweets by created_at in descending order
+    tweets.sort((a, b) => b.created_at - a.created_at);
+
+    // Clear the tweet container
+    $('#tweet-container').empty();
+
+    // Loop through each tweet and append it to the tweet container
+    tweets.forEach(tweet => {
+      const tweetElement = createTweetElement(tweet);
+      $('#tweet-container').prepend(tweetElement);
+    });
   };
 
-  const makeHTML = (tweetObj, option) => {
-    const { name, avatars, handle } = tweetObj.user;
-    const timeStamp = tweetObj.created_at;
-    const gender = tweetObj.gender;
-    if (option === 'header') {
-      return `<header class="${gender}">
-      <img class="avatar light" src=${avatars}>
-      <div class="userInfo">
-        <span class="light">${name}</span>
-        <small class="user-handle hide">${handle}</small>
-      </div>
-    </header>`;
-    }
-    return  `<footer>
-    <small class="light ${gender}">${Math.round((Date.now() - new Date(timeStamp)) / (1000 * 60 * 60 * 24))} Days Ago</small>
-    <span class="reaction light ${gender}">
-      <i class="fas fa-flag flag-btn"></i>
-      <i class="fas fa-retweet retweet-btn"></i>
-      <i class="fas fa-heart like-btn"></i>
-    </span>
-    </footer>`;
-  };
-
-  const createTweetElement = (tweetObj) => {
-    const { text } = tweetObj.content;
-    const gender = tweetObj.gender;
-    const article = $(`<article class="${gender}">`);
-    const header = makeHTML(tweetObj, 'header');
-    const footer = makeHTML(tweetObj, 'footer');
-    const tweetContainer = $('<div>').addClass('tweet-text');
-    const tweetText = $('<p>').addClass('light').text(text);
-    const tweetElement = article.addClass('tweet').append(header, tweetContainer.append(tweetText.addClass(gender)), footer);
-
-    // Add event listeners for buttons
-    tweetElement.find('.like-btn').on('click', function() {
-      $(this).toggleClass('liked');
-    });
-    tweetElement.find('.retweet-btn').on('click', function() {
-      alert('Retweeted!');
-    });
-    tweetElement.find('.flag-btn').on('click', function() {
-      alert('Tweet flagged!');
-    });
-    return tweetElement;
+  const createTweetElement = (tweet) => {
+    const timeSince = timeago.format(tweet.created_at); // Use timeago.js to format the timestamp
+    return `
+      <article class="tweet">
+        <header>
+          <img src="${tweet.user.avatars}" alt="User Avatar">
+          <h2>${tweet.user.name}</h2>
+          <p>${tweet.user.handle}</p>
+        </header>
+        <div class="tweet-content">
+          <p>${tweet.content.text}</p>
+        </div>
+        <footer>
+          <span class="time">${timeSince}</span>
+          <div class="tweet-icons">
+            <i class="fas fa-heart like-btn"></i>
+            <i class="fas fa-retweet retweet-btn"></i>
+            <i class="fas fa-flag flag-btn"></i>
+          </div>
+        </footer>
+      </article>
+    `;
   };
 
   const loadTweets = () => {
     $.ajax('/tweets', { method: "GET" })
-      .then(renderTweets);
+      .then(renderTweets)
+      .catch(err => console.error("Error loading tweets:", err));
   };
 
   loadTweets();
@@ -95,11 +80,13 @@ $(() => {
       $.ajax('/tweets', {
         method: "POST",
         data: form.serialize()
-      }).then(() => {
+      }).then((newTweet) => {
+        console.log("New tweet posted:", newTweet);
         textArea.val('');
         form.children('.counter').text('140');
-        loadTweets();
-      });
+        const tweetElement = createTweetElement(newTweet);
+        $('#tweet-container').prepend(tweetElement);
+      }).catch(err => console.error("Error posting tweet:", err));
     }
   });
 });
