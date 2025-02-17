@@ -17,6 +17,7 @@ module.exports = (DataHelpers) => {
   });
 
   router.post('/tweets', (req, res) => {
+    console.log("Received new tweet:", req.body);
     const newTweet = {
       user: {
         name: "User Name",
