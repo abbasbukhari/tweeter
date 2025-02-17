@@ -1,20 +1,45 @@
-#profile {
-  margin-top: 120px;
+header {
   height: 400px;
   width: 100%;
-  background-color: #D6DAFF;
-  position: relative;
-}
-#profile div {
-  position: absolute;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
+  background-color: #0064de;
+  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-h2 {
-  font-family: "Bungee", sans-serif;
+header div .avatar {
+  height: auto;
+  width: 150px;
 }
 
-/*# sourceMappingURL=header.css.map */
+header div img {
+  width: 150px;
+  margin-top: 30px;
+}
+
+header div h4 {
+  color: white;
+  margin: auto;
+}
+
+header div a {
+  font-weight: lighter;
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 768px) {
+  header {
+   height: 225px;
+   width: 33.3vw;
+   margin-right: 50px;
+   margin-top: 70px;
+  }
+
+  header .name {
+    padding-bottom: 20px;
+  }
+  
+}
+

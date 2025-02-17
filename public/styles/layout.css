@@ -14,26 +14,186 @@ html {
  * Global layout stuff
  */
 
-
 body {
-  color: #5E6572;
-  background-color: #EEE8F9;
+  color: #545149;
+  background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
-  position: relative;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
  main {
-  width: 90%;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 70px
+  width: 100%;
+  margin-top: 30px;
+  margin: auto;
+  background-color: #f4f1ec;
  }
 
- main section.hide, main .error {
-  display: none;
- } 
+ .all-things-tweet {
+   width: 90%;
+   margin: auto;
+ }
+
+ /* All new tweet styling: */
+ .new-tweet form label {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.new-tweet form textarea {
+  background-color: #f4f1ec;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 3px;
+  columns: 80;
+  font-size: 15px;
+  width: auto;
+  min-height: 30px;
+}
+
+
+.new-tweet {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-tweet label {
+  margin-right: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+textarea {
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.form-footer button {
+  font-size: small;
+  color: white;
+  font-family:  'Bungee', cursive;
+  border: none;
+  padding: 5px;
+  background-color: #4056A1;
+}
+
+.form-footer output {
+  font-size: medium;
+  font-family:  'Bungee', cursive;
+}
+
+#counter.red {
+  color: red;
+}
+
+/* Error message styling */
+.error-msg {
+  border: 5px solid red;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  text-align: left;
+  margin: 30px;
+  padding: 20px;
+  color: red;
+  font-weight: lighter;
+}
+
+.error-msg p {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+
+/* All Posted tweets stylings: */
+.posted-tweet {
+  border: black 3px solid;
+  margin-top: 50px;
+  padding: 10px 20px 10px 20px;
+}
+
+.posted-tweet:hover {
+  box-shadow: 5px 5px rgba(185, 185, 185, 0.794);
+}
+
+.tweet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+}
+
+.tweet-header-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tweet-header a {
+  align-self: flex-start;
+  text-decoration: none;
+  color: rgba(136, 136, 136, 0.678);
+  font-weight: 500;
+}
+
+.tweet-header-avatar {
+  max-width: 40px;
+}
+
+.posted-tweet h4 {
+  font-size: medium;
+  padding-bottom: 25px;
+  border-bottom: 3px solid black;
+  margin-bottom: 5px;
+}
+
+
+.tweet-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  padding-bottom: 10px;
+}
+
+.tweet-icons {
+  color: #4056A1;
+}
+
+.tweet-icons i:hover {
+  transition: 0.3s;
+  color: goldenrod;
+}
+
+
+@media only screen and (min-width: 768px) {
+  main {
+    display: flex;
+    flex-direction: row;
+    padding: 35px;
+    padding-top: 125px;
+  }
+  .all-things-tweet {
+    width: 66.7vw;
+    margin-top: 40px;
+    margin-left: 50px;
+  }
+}
+
+
+

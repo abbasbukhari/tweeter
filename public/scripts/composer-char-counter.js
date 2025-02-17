@@ -1,10 +1,22 @@
-$(() => {
-  const textarea = $('.new-tweet textarea');
-  textarea.on('keyup', () => {
-    const textLength = textarea.val().length;
-    const count = textarea.parent().children('.counter');
-    count.text(140 - textLength);
-    140 - textLength < 0 ? count.css('color', 'red') : count.css('color', '');
-  });
 
+
+$(document).ready(function() {
+  // --- our code goes here ---
+ const maxLength = 140;
+ const tweetArea = $('#tweet-area');
+ const counter = $('#counter');
+
+ $(tweetArea).on('input', function() {
+   const characters = $(this).val().length;
+   let remainingChars = maxLength - characters;
+   counter.text(remainingChars);
+   if (remainingChars < 0) {
+     counter.addClass("red");
+   } else {
+     counter.removeClass("red");
+   }
+   
+ });
+
+ 
 });

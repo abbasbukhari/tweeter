@@ -1,44 +1,46 @@
 "use strict";
 
-const express = require('express');
+const userHelper    = require("../lib/util/user-helper")
 
-module.exports = (DataHelpers) => {
-  const router = express.Router();
+const express       = require('express');
+const tweetsRoutes  = express.Router();
 
-  router.get('/tweets', (req, res) => {
+module.exports = function(DataHelpers) {
+
+  tweetsRoutes.get("/", function(req, res) {
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
-        console.error("Error fetching tweets:", err);
-        return res.status(500).json({ error: err.message });
+        res.status(500).json({ error: err.message });
+      } else {
+        res.json(tweets);
       }
-      console.log("Fetched tweets:", tweets);
-      res.json(tweets);
     });
   });
 
-  router.post('/tweets', (req, res) => {
-    console.log("Received new tweet:", req.body);
-    const newTweet = {
-      user: {
-        name: "User Name",
-        avatars: "https://i.imgur.com/73hZDYK.png",
-        handle: "@username"
-      },
+  tweetsRoutes.post("/", function(req, res) {
+    if (!req.body.text) {
+      res.status(400).json({ error: 'invalid request: no data in POST body'});
+      return;
+    }
+
+    const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
+    const tweet = {
+      user: user,
       content: {
         text: req.body.text
       },
       created_at: Date.now()
     };
 
-    DataHelpers.saveTweet(newTweet, (err) => {
+    DataHelpers.saveTweet(tweet, (err) => {
       if (err) {
-        console.error("Error saving tweet:", err);
-        return res.status(500).json({ error: err.message });
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(201).send();
       }
-      console.log("Saved new tweet:", newTweet);
-      res.json(newTweet);
     });
   });
 
-  return router;
-};
+  return tweetsRoutes;
+
+}
